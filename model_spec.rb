@@ -8,3 +8,8 @@ require 'spec_helper'
     xit "should have a confirmed password"
     xit "has many message alerts"
   end
+
+  describe Message do
+      xit "should have users"
+      
+  end
