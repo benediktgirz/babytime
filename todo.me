@@ -1,43 +1,63 @@
-pseudocode
+pseudocode MVP
+
+Userstory: 
+
+As a man/woman in a relationship I want to be informed when the lady of the couple is most likely to be fertile. I would like to receive a message to myself and/or the partner. The message should be customizable. I might want to send several messages to
+several people. I would like to modify the messages, delete, update them. I would like to sign up easily and delete my account easily. I would like to use this on my mobile phone and cpu.
 
 rails app
 
-generation with pql and rspec testing
-tests for user, msg
+  v 4.0.1, generation with pql and rspec testing
+  tests for user, msg (rspec, shoulda)
+  tests for controller 
+  tests for view / features ( capybara) 
 
 
 User 
 
-Email notification signup
-session enabling
-notification settings: 
-Q: When was last period? Rply otion: date (date picker, html5)
-M: What kind of message do you want to send tou yourself
-automatic password generation for login
-login page
+  Email notification signup
+  session enabling
+  notification settings: 
+  Q: When was last period? Rply otion: date (date picker, html5)
+  M: What kind of message do you want to send tou yourself
+  automatic password generation for login (research gem)
+  password de/encryption (gem bcrypt)
+  login page
 
 Account
 
-Message modification
-password reset
-account deletion
+  Message modification
+  password reset
+  account deletion
 
-m
+model
 
-user
-message
+  user
+  message
 
-v
-home
-login
-log out
-account
-confirmation page
+view
 
+  v.pages
+    home
+    login
+    log out
+    account
+    confirmation page
+    about us
 
-c
-email sending
-Information handling / serving / storage
+  v.tech
+    sass / html5
+
+  v.design
+    mobile first
+    color: babyblue and light rosa
+    font: Whitish
+    font type: checkout google fonts
+    style: onepage app 
+
+controller
+  email sending upon conditions = true (research gem)
+  Information handling / serving / storage
 
 
 
