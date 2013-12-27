@@ -2,8 +2,15 @@ pseudocode MVP
 
 Userstory: 
 
-As a man/woman in a relationship I want to be informed when the lady of the couple is most likely to be fertile. I would like to receive a message to myself and/or the partner. The message should be customizable. I might want to send several messages to
-several people. I would like to modify the messages, delete, update them. I would like to sign up easily and delete my account easily. I would like to use this on my mobile phone and cpu. I would like to see on which basis this is calculated.
+As a man/woman in a relationship I want to be informed when the lady of the 
+couple is most likely to be fertile. I would like to receive a message to 
+myself and/or the partner. The message should be customizable. 
+I might want to send several messages to several people. 
+
+I would like to modify the message templates, delete, update them. 
+I would like to sign up easily and delete my account easily.
+I would like to use this on my mobile phone and cpu. 
+I would like to see on which basis this is calculated.
 
 rails app
 
@@ -12,7 +19,8 @@ rails app
   tests for controller 
   tests for view / features ( capybara) 
 
-
+  ^^ if your deadline is tuesday you might not have time to write extensive tests - ET 26/12
+  
 User 
 
   Email notification signup
@@ -30,20 +38,76 @@ Account
   password reset
   account deletion
 
-model
+  ^^ what about a message history, where date and content of 
+     previously sent notifications can be viewed? 
+     (so the user knows it works) - ET 26/12
 
-  user
-  message
 
-view
+ #################
+ #     Model     #
+ #################
 
-  v.pages
-    home
-    login
-    log out
-    account
-    confirmation page
-    about us
+  User
+  ---------------------
+  - user_id : integer				# has_many message_templates, period_data, 
+  									# password_reset_links
+  - email : string
+  - password : string				# we store the encrypted password here
+  - salt : string 					# if the encryption method allows, we use a salt
+  ---------------------
+  resetPassword(id, new_password)
+  
+  
+  MessageTemplate
+  ---------------------
+  - message_template_id : integer	# has_many message_recipients
+  - user_id : integer				# belongs_to user
+  - content : text					# customisable message text
+  - subject : string				# customisable subject line of the message 
+  - send_next : datetime			# when to send this message next
+  - last_sent : datetime			# when the message was sent last
+  ---------------------
+  sendMessage(id)					# generate and send the message via email
+  
+  
+  MessageRecipient
+  ---------------------
+  - message_template-id : integer	# belongs_to message_template
+  - email : string					# the email address of this recipient
+  - name : string					# the name of the recipient 
+  									 (personalised emails are less likely to 
+  									                             be marked as spam)
+  									                             
+  PeriodData
+  ---------------------
+  user_id : integer					# belongs_to user
+  date : date						# the date of the last period, many of these entries
+  									# can be used to make a prediction for the next ovulation date
+  
+  
+  PasswordResetLink
+  ---------------------
+  - user_id : integer				# belongs_to user
+  - unique_url : string				# automatically generated string to a dynamic route in routes.rb
+  - request_date : datetime			# password reset link should expire after 24 hours
+ 
+ 
+ ##################
+ #  View - Pages  #
+ ##################
+
+  - home           		|	the frontpage of the website, links to signup, login, etc
+  - login				|	
+  - logout				|
+  - signup				|	
+  - reset_password		|	on this page the user can reset his password
+  - account				|	single page where user can manage all of his message templates
+						|	and his account
+  - confirm				|	i assume you want this to confirm changes to message templates, 
+ 							could also be done with javascript in the account view
+  - how_it_works		|	a page where the algorithm / method is described
+  - about				|	something about the makers of the website
+
 
   v.tech
     sass / html5
