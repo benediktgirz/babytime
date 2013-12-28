@@ -11,6 +11,10 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara', '2.1.0'
+  gem 'shoulda-matchers'
+  gem 'guard-rspec'
+  gem 'guard-rails'
+  gem 'guard-sass'
 end
 
 group :development do
