@@ -15,6 +15,7 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'guard-rails'
   gem 'guard-sass'
+  gem 'rb-fsevent'
 end
 
 group :development do
