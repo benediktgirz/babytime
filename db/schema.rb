@@ -17,6 +17,11 @@ ActiveRecord::Schema.define(version: 20131229162338) do
   enable_extension "plpgsql"
 
   create_table "messagetemplates", force: true do |t|
+    t.integer  "message_template_id"
+    t.string   "content"
+    t.string   "subject"
+    t.datetime "send_next"
+    t.datetime "last_sent"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
