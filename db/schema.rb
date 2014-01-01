@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140101194944) do
+ActiveRecord::Schema.define(version: 20140101214537) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,13 @@ ActiveRecord::Schema.define(version: 20140101194944) do
     t.string   "subject"
     t.datetime "send_next"
     t.datetime "last_sent"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "perioddata", force: true do |t|
+    t.integer  "period_id"
+    t.date     "date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
