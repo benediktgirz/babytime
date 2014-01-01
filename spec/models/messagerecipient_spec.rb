@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe Messagerecipient do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should validate_presence_of(:message_template_id)}
+  it { should validate_presence_of(:email)}
+  it { should validate_presence_of(:name)}
 end
