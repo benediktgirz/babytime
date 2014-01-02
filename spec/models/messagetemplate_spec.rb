@@ -8,4 +8,5 @@ describe Messagetemplate do
   it { should validate_presence_of(:send_next)}
   it { should validate_presence_of(:last_sent)}
   it { should belong_to(:user) }
+  it { should have_many(:messagerecipients)}
 end
