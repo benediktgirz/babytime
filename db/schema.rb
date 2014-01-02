@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20140102073601) do
   enable_extension "plpgsql"
 
   create_table "messagerecipients", force: true do |t|
+    t.integer  "messagetemplate_id"
     t.integer  "message_template_id"
     t.string   "email"
     t.string   "name"
