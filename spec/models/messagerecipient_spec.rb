@@ -6,4 +6,5 @@ describe Messagerecipient do
   it { should validate_presence_of(:name)}
   it { should validate_uniqueness_of(:message_template_id)}
   it { should validate_uniqueness_of(:email)}
+  it { should belong_to(:messagetemplate)}
 end
