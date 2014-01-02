@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20140101214537) do
   end
 
   create_table "messagetemplates", force: true do |t|
+    t.integer  "user_id"
     t.integer  "message_template_id"
     t.string   "content"
     t.string   "subject"

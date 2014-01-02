@@ -1,6 +1,7 @@
 class CreateMessagetemplates < ActiveRecord::Migration
   def change
     create_table :messagetemplates do |t|
+      t.belongs_to :user
       t.integer :message_template_id
       t.string  :content
       t.string  :subject
