@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140101214537) do
+ActiveRecord::Schema.define(version: 20140102073601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(version: 20140101214537) do
     t.string   "subject"
     t.datetime "send_next"
     t.datetime "last_sent"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "passwordresetlinks", force: true do |t|
+    t.integer  "user_id"
+    t.string   "unique_url"
+    t.datetime "request_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
