@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20140101214537) do
   end
 
   create_table "perioddata", force: true do |t|
+    t.integer  "user_id"
     t.integer  "period_id"
     t.date     "date"
     t.datetime "created_at"
