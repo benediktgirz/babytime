@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140101214537) do
+ActiveRecord::Schema.define(version: 20140102073601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "messagerecipients", force: true do |t|
+    t.integer  "messagetemplate_id"
     t.integer  "message_template_id"
     t.string   "email"
     t.string   "name"
@@ -35,7 +36,16 @@ ActiveRecord::Schema.define(version: 20140101214537) do
     t.datetime "updated_at"
   end
 
+  create_table "passwordresetlinks", force: true do |t|
+    t.integer  "user_id"
+    t.string   "unique_url"
+    t.datetime "request_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "perioddata", force: true do |t|
+    t.integer  "user_id"
     t.integer  "period_id"
     t.date     "date"
     t.datetime "created_at"
